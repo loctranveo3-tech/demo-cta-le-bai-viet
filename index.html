@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demo lề bài viết Tâm Anh</title>
+<!-- Thẻ meta giống bài thật: demo đọc khoa từ đây, như cách làm thật trên site -->
+<meta property="article:section" content="Sức khỏe tổng quát">
+<meta property="article:tag" content="Nội tổng hợp">
+<meta property="article:tag" content="Sốt">
+<style>
+/* Bố cục: trang bài viết tamanhhospital.vn ở cỡ thật. Thân bài 874px ở giữa; PC-1 nằm ở lề phải, PC-2 là cột nút ở mép màn hình. */
+:root{
+  --navy:#102e9e; --navy-d:#0a1f73; --ink:#262b36; --muted:#667085; --line:#e2e6f0;
+  --soft:#f3f5fa; --skel:#e8ebf2; --red:#c62828; --red-soft:#fdf0f0; --green:#1b7f4b;
+  --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --hdr:145px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;font:15px/1.6 var(--font);color:var(--ink);background:#fff}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #6f8ce6;outline-offset:2px}
+.c{max-width:1170px;margin:0 auto;padding:0 15px}
+svg{flex:none}
+
+/* ---------- header (mô phỏng header dính 145px của site) ---------- */
+header.ta{position:sticky;top:0;z-index:30;background:#fff;box-shadow:0 1px 0 var(--line),0 6px 16px rgba(16,46,158,.06)}
+.ta-strip{height:40px;background:var(--soft);font-size:13px;color:var(--navy)}
+.ta-strip .c{display:flex;justify-content:flex-end;align-items:center;gap:24px;height:100%}
+.ta-strip span{display:flex;align-items:center;gap:6px}
+.ta-logo{height:60px}
+.ta-logo .c{display:flex;align-items:center;gap:28px;height:100%}
+.logo{font-size:27px;font-weight:800;color:var(--navy);letter-spacing:-.6px;white-space:nowrap}
+.logo span{font-weight:300}
+.hot{display:flex;gap:18px;font-size:13px;color:var(--muted);white-space:nowrap}
+.hot b{color:var(--navy);font-weight:700}
+.search{margin-left:auto;width:230px;height:34px;border:1px solid var(--line);border-radius:17px;display:flex;align-items:center;gap:8px;padding:0 14px;color:#9aa3b5;font-size:13px}
+.ta-menu{height:45px;border-top:1px solid var(--line)}
+.ta-menu .c{display:flex;align-items:center;gap:30px;height:100%;font-size:13.5px;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden}
+
+/* ---------- bài viết ---------- */
+.crumb{font-size:12px;color:#8a8f9c;text-transform:uppercase;padding:18px 0 0;letter-spacing:.2px}
+.crumb b{color:var(--navy);font-weight:400}
+.post{position:relative;width:874px;max-width:calc(100% - 30px);margin:0 auto;padding-bottom:10px}
+.post h1{font-size:20px;line-height:1.35;font-weight:900;color:var(--navy);text-transform:uppercase;margin:16px 0 10px;text-wrap:balance}
+.meta{display:flex;align-items:center;gap:16px;font-size:13px;color:#6b7080;margin-bottom:18px}
+.meta span{display:flex;align-items:center;gap:6px}
+.author{background:var(--navy);color:#fff;border-radius:999px;padding:4px 14px}
+.sk{display:flex;flex-direction:column;gap:13px;margin:16px 0}
+.sk i{display:block;height:11px;border-radius:6px;background:var(--skel)}
+.pic{aspect-ratio:874/460;max-width:100%;border-radius:4px;margin:20px 0;background:linear-gradient(135deg,#e4e9f5 0%,#d3dcef 55%,#c6d1ea 100%);display:grid;place-items:center;color:#8592b3}
+.toc{border:1px solid #cfd7ec;border-radius:4px;padding:12px 18px 10px;margin:20px 0}
+.toc b{display:flex;align-items:center;gap:8px;font-size:15px}
+.toc ol{margin:6px 0 0;padding-left:22px;font-size:14.5px;line-height:1.9;color:#2d3340}
+.post h2{font-size:20px;line-height:1.4;color:var(--navy);margin:30px 0 8px;text-wrap:balance}
+.banner{margin:22px 0;border-radius:6px;padding:30px 34px;color:#fff;background:linear-gradient(100deg,#0d34a0 0%,#1f5fd0 70%,#3a86ea 100%);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.banner b{display:block;font-size:21px;line-height:1.3;letter-spacing:.2px}
+.banner small{display:block;margin-top:6px;opacity:.85;font-size:13.5px}
+.banner .pill{background:#fff;color:var(--navy);font-weight:800;border-radius:8px;padding:10px 16px;white-space:nowrap;font-size:14px}
+.updated{font-size:13px;color:#8a8f9c;margin-top:18px}
+.tags{display:flex;align-items:center;gap:8px;font-size:14px;margin:18px 0 0}
+.tags a{border:1px solid var(--line);background:var(--soft);border-radius:4px;padding:3px 11px;color:var(--ink);text-decoration:none}
+.related{border-top:1px solid var(--line);margin-top:36px;padding:34px 0 46px}
+.related h3{text-align:center;color:var(--navy);text-transform:uppercase;font-size:20px;margin:0 0 22px;letter-spacing:.3px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.card-r .ph{aspect-ratio:16/10;border-radius:4px;background:linear-gradient(135deg,#e6ebf6,#d5ddef)}
+.card-r p{margin:10px 0 0;font-size:14.5px;line-height:1.45;color:#2d3340}
+footer{background:#0b2785;color:#c9d3f5;padding:34px 0 40px;font-size:13px}
+footer .c{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer b{color:#fff;font-size:14px;display:block;margin-bottom:10px}
+footer i{display:block;height:9px;border-radius:5px;background:rgba(255,255,255,.14);margin:10px 0}
+
+/* nút nổi đang có trên site */
+.fab-toc{position:fixed;z-index:20;top:50%;left:max(14px,calc(50% - 437px - 70px));width:46px;height:46px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);display:grid;place-items:center}
+.fab-chat{position:fixed;z-index:20;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;border:0;background:#0b57d0;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(11,87,208,.35)}
+
+/* ---------- PC-1: hộp dính ở lề phải ---------- */
+.pc1{position:absolute;top:0;bottom:0;left:calc(100% + 28px);width:clamp(240px,calc((100vw - 874px)/2 - 46px),300px);display:none}
+.pc1 .box{position:sticky;top:calc(var(--hdr) + 22px);max-height:calc(100vh - var(--hdr) - 44px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(16,46,158,.10)}
+body.m-pc1 .pc1{display:block}
+
+/* ---------- PC-2: cột nút ở mép phải ---------- */
+.rail{position:fixed;z-index:25;right:16px;top:50%;transform:translateY(-50%);display:none;flex-direction:column;gap:8px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 28px rgba(16,46,158,.14)}
+.rail button{width:66px;border:0;border-radius:12px;padding:11px 4px 9px;background:var(--soft);color:var(--navy);font-size:11.5px;font-weight:700;line-height:1.2;display:grid;justify-items:center;gap:6px}
+.rail button:hover{filter:brightness(.97)}
+.rail .r-emg{background:var(--red-soft);color:var(--red)}
+.rail .r-book{background:var(--navy);color:#fff}
+body.m-pc2 .rail{display:flex}
+.panel{position:fixed;z-index:26;right:16px;top:calc(var(--hdr) + 16px);width:340px;max-width:calc(100vw - 32px);max-height:calc(100vh - var(--hdr) - 32px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(10,20,60,.22);transform:translateX(24px);opacity:0;transition:transform .22s ease,opacity .22s ease}
+.panel.on{transform:none;opacity:1}
+.panel-h{position:sticky;top:0;z-index:2;background:#fff;display:flex;align-items:center;gap:10px;padding:12px 12px 10px 16px;border-bottom:1px solid var(--line);font-weight:700;color:var(--navy);font-size:14.5px}
+.panel-h button{margin-left:auto;width:32px;height:32px;border-radius:50%;border:0;background:var(--soft);color:var(--ink);display:grid;place-items:center}
+
+/* PC-1 trên màn 1200–1439px: thân bài dịch sang trái trong khung 1170px để nhường chỗ cho hộp */
+@media (max-width:1439.98px){
+  body.m-pc1 .post{margin-left:max(15px,calc((100vw - 1170px)/2 + 15px));margin-right:auto}
+  body.m-pc1 .pc1{left:calc(100% + 24px);width:min(268px,calc(100vw - 874px - 70px))}
+  body.m-pc1 .fab-toc{left:max(8px,calc((100vw - 1170px)/2 - 52px))}
+}
+/* màn thấp (laptop 768px): thu gọn hộp */
+@media (max-height:760px){
+  .pc1 .box{top:calc(var(--hdr) + 12px);max-height:calc(100vh - var(--hdr) - 24px)}
+  .pc1 .khoa-note,.pc1 .note{display:none}
+  .pc1 .f{margin-top:8px;gap:3px}
+  .pc1 .emg{padding:7px 12px 8px}
+  .pc1 .cta{padding:10px 12px 12px}
+  .pc1 .seg button{padding:6px 4px}
+  .pc1 .khoa{margin-top:9px}
+  .pc1 .f input{padding:7px 10px}
+  .pc1 .city button{padding:6px}
+  .pc1 .agree{margin-top:8px}
+  .pc1 .go{margin-top:8px;padding:9px}
+  .pc1 .cta{padding-bottom:9px}
+  .pc1 .f textarea{min-height:48px}
+  .pc1 .about{margin-top:8px}
+  .pc1 .about span{-webkit-line-clamp:1}
+}
+/* màn hẹp hơn 1200px: không đủ chỗ cho hộp, PC-1 chuyển sang cột nút */
+@media (max-width:1199.98px){
+  body.m-pc1 .pc1{display:none}
+  body.m-pc1 .rail{display:flex}
+}
+
+/* ---------- khối đặt lịch / hỏi bác sĩ (dùng chung) ---------- */
+.emg{background:var(--red-soft);border-bottom:1px solid #f4d0d0;padding:9px 14px 10px;font-size:12.5px;color:#7a1d1d}
+.emg .t{display:flex;align-items:center;gap:7px;font-weight:700;color:var(--red)}
+.emg .calls{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.emg .calls button{border:1px solid #efc2c2;background:#fff;color:var(--red);border-radius:7px;padding:4px 9px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.emg .calls button span{font-weight:400;color:#7a1d1d;margin-right:4px}
+.emg.big .calls{flex-direction:column}
+.emg.big .calls button{display:flex;justify-content:space-between;padding:9px 12px;font-size:14px}
+.cta{padding:12px 14px 14px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:10px;padding:3px}
+.seg button{border:0;background:none;border-radius:8px;padding:8px 4px;font-size:13px;font-weight:700;color:var(--muted)}
+.seg button[aria-selected="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 4px rgba(16,46,158,.14)}
+.khoa{display:flex;align-items:center;gap:8px;margin:12px 0 1px;font-size:13.5px}
+.khoa .ck{width:20px;height:20px;border-radius:50%;background:#e4f3ea;color:var(--green);display:grid;place-items:center}
+.khoa .ck.q{background:var(--soft);color:var(--muted)}
+.khoa b{color:var(--ink)}
+.khoa .chg{margin-left:auto;border:0;background:none;color:var(--navy);text-decoration:underline;font-size:12.5px;padding:0}
+.khoa-note{font-size:11.5px;color:var(--muted);margin:0 0 4px 28px}
+.khoa-sel{width:100%;margin:6px 0 2px;font:13px var(--font);padding:6px;border:1px solid var(--line);border-radius:8px}
+.f{display:grid;gap:4px;margin-top:10px}
+.f label,.f .lb{font-size:12.5px;font-weight:700;color:#3a4050}
+.f input,.f textarea{width:100%;font:14px var(--font);padding:8px 10px;border:1px solid #cfd5e2;border-radius:9px;background:#fff;color:var(--ink)}
+.f textarea{resize:vertical;min-height:64px}
+.f input:focus,.f textarea:focus{border-color:#6f8ce6;outline:none;box-shadow:0 0 0 3px rgba(111,140,230,.18)}
+.city{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.city button{border:1px solid #cfd5e2;background:#fff;border-radius:9px;padding:7px;font-size:13.5px;color:var(--ink)}
+.city button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.about{margin-top:10px;font-size:12.5px;color:var(--muted);background:var(--soft);border-radius:9px;padding:7px 10px;line-height:1.45}
+.about span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.about b{color:var(--ink);font-weight:600}
+.agree{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12.5px;color:#4a5060;line-height:1.4}
+.agree input{margin:2px 0 0;flex:none}
+.err{color:var(--red);font-size:12px;min-height:0}
+.go{width:100%;margin-top:10px;border:0;border-radius:10px;background:var(--navy);color:#fff;font-size:14.5px;font-weight:700;padding:10px}
+.go:hover{background:var(--navy-d)}
+.note{margin-top:7px;font-size:11.5px;color:var(--muted);line-height:1.45;text-align:center}
+.note button{border:0;background:none;padding:0;color:var(--navy);text-decoration:underline;font-size:11.5px}
+.done{padding:6px 2px 2px;text-align:center}
+.done .ok{width:46px;height:46px;border-radius:50%;background:#e4f3ea;color:var(--green);display:grid;place-items:center;margin:8px auto 10px}
+.done b{display:block;font-size:15px;color:var(--ink)}
+.done p{margin:6px 0 0;font-size:13px;color:#4a5060;line-height:1.5}
+.done .ctx{margin-top:10px;font-size:12px;color:var(--muted);background:var(--soft);border-radius:9px;padding:8px 10px;text-align:left}
+.done button{margin-top:12px;border:0;background:none;color:var(--navy);text-decoration:underline;font-size:13px}
+
+/* ---------- thanh điều khiển demo (không thuộc thiết kế đề xuất) ---------- */
+.dock{position:fixed;z-index:50;left:16px;bottom:16px;background:#15181f;color:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.28);font-size:13px;max-width:calc(100vw - 32px)}
+.dock-row{display:flex;align-items:center;gap:6px;padding:7px}
+.dock .tag{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8e98b0;padding:0 8px 0 6px}
+.dock .opt{border:0;border-radius:9px;padding:7px 12px;background:transparent;color:#cfd5e4;font-size:13px;font-weight:600;white-space:nowrap}
+.dock .opt[aria-pressed="true"]{background:#fff;color:#15181f}
+.dock .w{color:#8e98b0;font-variant-numeric:tabular-nums;padding:0 6px;white-space:nowrap}
+.dock .ic{border:0;background:#262a34;color:#cfd5e4;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:14px}
+.dock .hint{padding:0 14px 10px;color:#f3c26b;font-size:12.5px;line-height:1.45;max-width:440px}
+.dock .info{padding:0 14px 12px;color:#c3cad9;font-size:12.5px;line-height:1.5;max-width:440px}
+.dock.min .dock-row>*:not(.tag):not(.ic.mn),.dock.min .hint,.dock.min .info{display:none}
+.toast{position:fixed;z-index:60;left:50%;bottom:86px;transform:translate(-50%,12px);opacity:0;transition:.22s;background:#15181f;color:#fff;padding:10px 16px;border-radius:10px;font-size:13.5px;pointer-events:none;max-width:min(520px,calc(100vw - 32px));text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body class="m-pc1">
+
+<header class="ta">
+  <div class="ta-strip"><div class="c">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Dành cho khách hàng</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Hỏi đáp</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Đặt lịch khám</span>
+  </div></div>
+  <div class="ta-logo"><div class="c">
+    <div class="logo">TâmAnh<span>Hospital</span></div>
+    <div class="hot"><span>Hà Nội <b>024 7106 6858</b></span><span>TP.HCM <b>0287 102 6789</b></span></div>
+    <div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Tìm kiếm</div>
+  </div></div>
+  <nav class="ta-menu"><div class="c"><span>GIỚI THIỆU</span><span>CHUYÊN KHOA</span><span>CHUYÊN GIA – BÁC SĨ</span><span>DỊCH VỤ ĐẶC BIỆT</span><span>TIỆN NGHI</span><span>GIẢI THƯỞNG</span><span>TIN TỨC</span><span>LIÊN HỆ</span></div></nav>
+</header>
+
+<main>
+  <div class="c crumb">Trang chủ › Kiến thức y khoa › Sức khỏe tổng quát › <b>Thắc mắc: Người bị sốt có nên đắp chăn không?</b></div>
+
+  <div class="post" id="post">
+    <article>
+      <h1 id="title" data-url="https://tamanhhospital.vn/sot-co-nen-dap-chan-khong/">Thắc mắc: Người bị sốt có nên đắp chăn không?</h1>
+      <div class="meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>05/11/2026</span>
+        <span class="author">Bệnh viện Đa khoa Tâm Anh</span>
+      </div>
+      <div class="sk" data-n="3"></div>
+      <div class="pic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></div>
+      <div class="toc">
+        <b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Mục lục</b>
+        <ol>
+          <li>Sốt có nên đắp chăn không?</li>
+          <li>Rủi ro có thể xảy ra nếu cơ thể không hạ nhiệt kịp thời</li>
+          <li>Có trường hợp nào có thể đắp chăn khi sốt không?</li>
+          <li>Gợi ý các phương pháp khác giúp cơ thể thoải mái khi sốt</li>
+        </ol>
+      </div>
+
+      <h2>Sốt có nên đắp chăn không?</h2>
+      <div class="sk" data-n="4"></div>
+      <div class="sk" data-n="2"></div>
+      <div class="pic"></div>
+
+      <h2>Rủi ro có thể xảy ra nếu cơ thể không hạ nhiệt kịp thời</h2>
+      <div class="sk" data-n="3"></div>
+      <div class="sk" data-n="4"></div>
+      <div class="banner">
+        <div><b>KHÁM SỨC KHỎE TỔNG QUÁT<br>CÔNG NGHỆ CAO</b><small>Banner đang có trong bài</small></div>
+        <span class="pill">Xem gói khám</span>
+      </div>
+
+      <h2>Có trường hợp nào có thể đắp chăn khi sốt không?</h2>
+      <div class="sk" data-n="4"></div>
+      <div class="sk" data-n="2"></div>
+
+      <h2>Gợi ý các phương pháp khác giúp cơ thể thoải mái khi sốt</h2>
+      <div class="sk" data-n="2"></div>
+      <div class="sk" data-n="3"></div>
+      <div class="sk" data-n="3"></div>
+      <div class="pic"></div>
+      <div class="sk" data-n="3"></div>
+
+      <div class="updated">Cập nhật lần cuối: 16:42 05/11/2026</div>
+      <div class="tags">Chủ đề: <a href="#">Nội tổng hợp</a><a href="#">Sốt</a></div>
+    </article>
+
+    <!-- PC-1 -->
+    <aside class="pc1" aria-label="Đặt lịch khám và hỏi bác sĩ"><div class="box" id="pc1box"></div></aside>
+  </div>
+
+  <section class="related"><div class="c">
+    <h3>Bài viết liên quan</h3>
+    <div class="cards">
+      <div class="card-r"><div class="ph"></div><p>Sốt là gì? Các dấu hiệu và cách xử trí cần biết</p></div>
+      <div class="card-r"><div class="ph"></div><p>Hướng dẫn cách chăm sóc người bị sốt tại nhà an toàn</p></div>
+      <div class="card-r"><div class="ph"></div><p>Khi bị sốt đổ mồ hôi nên làm gì để nhanh hồi phục?</p></div>
+      <div class="card-r"><div class="ph"></div><p>Cần làm gì để xử lý sốt ở người cao tuổi?</p></div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="c">
+  <div><b>BỆNH VIỆN ĐA KHOA TÂM ANH</b><i style="width:80%"></i><i style="width:65%"></i><i style="width:72%"></i></div>
+  <div><b>DÀNH CHO KHÁCH HÀNG</b><i style="width:60%"></i><i style="width:75%"></i><i style="width:50%"></i></div>
+  <div><b>HỆ THỐNG BỆNH VIỆN</b><i style="width:85%"></i><i style="width:70%"></i><i style="width:62%"></i></div>
+</div></footer>
+
+<!-- nút nổi đang có trên site (mục lục dời sang lề trái để nhường lề phải) -->
+<button class="fab-toc" type="button" title="Mục lục" aria-label="Mục lục"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
+<button class="fab-chat" type="button" id="chatfab" title="Web chat" aria-label="Web chat"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+
+<!-- PC-2 -->
+<div class="rail" id="rail" role="toolbar" aria-label="Khẩn cấp, hỏi bác sĩ, đặt lịch khám">
+  <button type="button" class="r-emg" data-open="emg" title="Gọi khẩn cấp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>Khẩn cấp</button>
+  <button type="button" data-open="ask" title="Hỏi bác sĩ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9.6 8.6a2.5 2.5 0 1 1 3.4 2.6c-.6.3-1 .8-1 1.5"/><path d="M12 15h.01"/></svg>Hỏi<br>bác sĩ</button>
+  <button type="button" class="r-book" data-open="book" title="Đặt lịch khám"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h3v3H8z"/></svg>Đặt lịch</button>
+</div>
+<div class="panel" id="panel" role="dialog" aria-modal="false" aria-labelledby="panel-t" hidden>
+  <div class="panel-h"><span id="panel-t"></span><button type="button" id="panel-x" aria-label="Thu lại"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div id="panel-b"></div>
+</div>
+
+<!-- thanh điều khiển demo -->
+<div class="dock" id="dock">
+  <div class="dock-row">
+    <span class="tag">Demo</span>
+    <button type="button" class="opt" data-mode="pc1" aria-pressed="true">PC-1 · Hộp ở lề</button>
+    <button type="button" class="opt" data-mode="pc2" aria-pressed="false">PC-2 · Cột nút</button>
+    <span class="w" id="vw"></span>
+    <button type="button" class="ic" id="infoBtn" aria-expanded="false" title="Ghi chú">i</button>
+    <button type="button" class="ic mn" id="minBtn" title="Thu gọn">–</button>
+  </div>
+  <div class="hint" id="hint" hidden>Màn hẹp hơn 1200px không đủ chỗ cho hộp, nên PC-1 chuyển sang cột nút như PC-2.</div>
+  <div class="info" id="info" hidden>Mô phỏng giao diện, form không gửi dữ liệu đi đâu. Số 115 và 2 số tổng đài lấy từ site. Cần xác nhận: số cấp cứu riêng, ai gọi lại và trong bao lâu, dữ liệu gửi về hệ thống nào.</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* 39 khoa của ô "Bạn gửi tư vấn đến khoa?" trên form hỏi đáp tamanhhospital.vn/tu-van/ (xem 09/11/2026) */
+const KHOA = ["Khoa Xạ trị","Khoa Ngoại lồng ngực Mạch máu","Khoa Nội thần kinh","Trung tâm Chấn thương chỉnh hình","Trung tâm tế bào gốc","Khoa Phẫu thuật thần kinh","Khoa Dinh dưỡng Tiết chế","Trung tâm Chẩn đoán Hình ảnh","Khoa nội tổng hợp","Trung tâm Nội soi & Phẫu thuật nội soi tiêu Hóa","Khoa Dược","Khoa Hô hấp","Khoa Giải phẫu bệnh & Tế bào","Khoa Cơ xương khớp","Trung tâm Kiểm soát cân nặng và Điều trị béo phì","Khoa Tai Mũi Họng","Khoa Răng Hàm Mặt","Trung tâm Xét nghiệm","Trung tâm Tiết niệu Thận học","Khoa Nam học","Trung tâm Gây mê hồi sức, Điều trị Đau và Chăm sóc giảm nhẹ","Khoa Ung bướu","Khoa Da liễu","Khoa Nội tiết - Đái tháo đường","Khoa Ngoại Vú - Đầu mặt cổ","Trung tâm Hỗ trợ sinh sản","Trung tâm sơ sinh","Trung tâm Sản Phụ Khoa","Trung tâm Tim mạch","Trung tâm y học bào thai","Trung tâm Mắt công nghệ cao","Khoa Ngoại tổng hợp","Khoa Tiêu hóa - Gan mật - Tụy","Trung tâm tiêm chủng","Khoa Khám bệnh","Khoa Kiểm soát nhiễm khuẩn","Khoa Cấp cứu","Khoa Miễn dịch lâm sàng","Trung tâm Đào Tạo & Nghiên Cứu Khoa Học"];
+/* 115: cấp cứu quốc gia. Hai số tổng đài lấy từ nút "Liên hệ" trên site. */
+const CALLS = [{k:'115', n:'115', l:'Cấp cứu 115'},{k:'Hà Nội', n:'024 3872 3872', l:'Tổng đài Tâm Anh Hà Nội'},{k:'TP.HCM', n:'028 7102 6789', l:'Tổng đài Tâm Anh TP.HCM'}];
+
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => (s||'').normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();
+const short = k => { const s = k.replace(/^(Khoa|Trung tâm)\s+/,''); return s.charAt(0).toUpperCase() + s.slice(1); };
+
+/* Đọc từ trang, như làm thật: thẻ chủ đề (meta article:tag), tiêu đề, URL */
+const PAGE = {
+  title: $('#title').textContent.trim(),
+  url: $('#title').dataset.url,
+  tags: [...document.querySelectorAll('meta[property="article:tag"]')].map(m => m.content)
+};
+function matchKhoa(tags){
+  for (const t of tags){
+    const nt = norm(t); if (nt.length < 4) continue;
+    for (const k of KHOA){ if ((' '+norm(k).replace(/^(khoa|trung tâm)\s+/,'')+' ').includes(' '+nt+' ')) return {khoa:k, tag:t}; }
+  }
+  return null;
+}
+const KM = matchKhoa(PAGE.tags);
+
+/* đoạn văn giả lập */
+document.querySelectorAll('.sk').forEach((el, j) => {
+  const n = +el.dataset.n;
+  el.innerHTML = Array.from({length:n}, (_, i) => `<i style="width:${i === n-1 ? 38 + (j*17 % 40) : 93 + ((i+j)*3 % 7)}%"></i>`).join('');
+});
+
+let toastT;
+function toast(msg){ const t = $('#toast'); t.innerHTML = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 3200); }
+const ICON_PHONE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>';
+const ICON_CHECK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg>';
+
+function emgHTML(big){
+  return `<div class="emg${big?' big':''}"><div class="t">${ICON_PHONE}Khẩn cấp? Gọi ngay, không cần điền form</div>
+    <div class="calls">${CALLS.map((c,i) => `<button type="button" data-call="${i}">${big?`<span>${esc(c.l)}</span>`:(c.k==='115'?'':`<span>${esc(c.k)}</span>`)}${esc(c.n)}</button>`).join('')}</div></div>`;
+}
+function bindCalls(root){
+  root.querySelectorAll('[data-call]').forEach(b => b.addEventListener('click', () => {
+    const c = CALLS[+b.dataset.call]; toast(`Trên điện thoại, bấm là gọi <b>${esc(c.n)}</b>`);
+  }));
+}
+const cleanPhone = v => (v||'').replace(/[^\d+]/g,'').replace(/^\+84/,'0');
+const validPhone = v => /^0\d{9,10}$/.test(cleanPhone(v));
+const maskPhone = v => { const p = cleanPhone(v); return p.slice(0,3) + ' xxx ' + p.slice(-3); };
+
+/* Khối đặt lịch / hỏi bác sĩ, dùng chung cho PC-1 và PC-2 */
+let uid = 0;
+function buildCTA(tab){
+  const id = 'c' + (++uid);
+  const wrap = document.createElement('div');
+  let khoa = KM ? short(KM.khoa) : '';
+  wrap.innerHTML = `
+  <div class="cta">
+    <div class="seg" role="tablist">
+      <button type="button" role="tab" data-t="book">Đặt lịch khám</button>
+      <button type="button" role="tab" data-t="ask">Hỏi bác sĩ</button>
+    </div>
+    <div class="body">
+      <div class="khoa"><span class="ck ${KM?'':'q'}">${KM?ICON_CHECK:'?'}</span><span>Khoa <b class="kn">${KM?esc(khoa):'chưa rõ'}</b></span><button type="button" class="chg">Đổi</button></div>
+      <div class="khoa-note">${KM?'Theo chủ đề của bài':'Tổng đài sẽ giúp chọn khoa'}</div>
+
+      <form class="fb" novalidate>
+        <div class="f"><span class="lb">Khám ở</span><div class="city"><button type="button" aria-pressed="false" data-v="Hà Nội">Hà Nội</button><button type="button" aria-pressed="false" data-v="TP.HCM">TP.HCM</button></div><div class="err" data-e="city"></div></div>
+        <div class="f"><label for="${id}-n">Họ tên</label><input id="${id}-n" name="hoten" autocomplete="name"><div class="err" data-e="hoten"></div></div>
+        <div class="f"><label for="${id}-p">Số điện thoại</label><input id="${id}-p" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx"><div class="err" data-e="phone"></div></div>
+        <label class="agree"><input type="checkbox" name="agree" id="${id}-a">Tôi đồng ý cho Tâm Anh liên hệ để tư vấn.</label><div class="err" data-e="agree"></div>
+        <button class="go" type="submit">Gửi yêu cầu đặt lịch</button>
+        <div class="note">Tổng đài Tâm Anh gọi lại để chốt giờ và cơ sở khám.</div>
+      </form>
+
+      <form class="fa" novalidate hidden>
+        <div class="about"><span>Câu hỏi về bài: <b>${esc(PAGE.title)}</b></span></div>
+        <div class="f"><label for="${id}-q">Câu hỏi của bạn</label><textarea id="${id}-q" name="q" rows="2"></textarea><div class="err" data-e="q"></div></div>
+        <div class="f"><label for="${id}-p2">Số điện thoại</label><input id="${id}-p2" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx"><div class="err" data-e="phone"></div></div>
+        <label class="agree"><input type="checkbox" name="agree" id="${id}-a2">Tôi đồng ý cho Tâm Anh liên hệ để trả lời.</label><div class="err" data-e="agree"></div>
+        <button class="go" type="submit">Gửi câu hỏi</button>
+        <div class="note">Hoặc <button type="button" class="chat">chat ngay</button> với tư vấn viên.</div>
+      </form>
+    </div>
+    <div class="done" hidden></div>
+  </div>`;
+  const seg = wrap.querySelectorAll('.seg button'), body = $('.body', wrap), done = $('.done', wrap);
+  const fb = $('.fb', wrap), fa = $('.fa', wrap);
+  function setTab(t){
+    seg.forEach(b => b.setAttribute('aria-selected', b.dataset.t === t));
+    fb.hidden = t !== 'book'; fa.hidden = t !== 'ask'; body.hidden = false; done.hidden = true;
+    wrap.dispatchEvent(new CustomEvent('tab', {detail:t}));
+  }
+  seg.forEach(b => b.addEventListener('click', () => setTab(b.dataset.t)));
+  wrap.setTab = setTab;
+
+  $('.chg', wrap).addEventListener('click', e => {
+    if ($('.khoa-sel', wrap)) return;
+    const sel = document.createElement('select'); sel.className = 'khoa-sel'; sel.setAttribute('aria-label','Chọn khoa');
+    sel.innerHTML = `<option value="">Chưa rõ, nhờ tổng đài chọn</option>` + KHOA.map(k => `<option${short(k)===khoa?' selected':''}>${esc(short(k))}</option>`).join('');
+    sel.addEventListener('change', () => {
+      khoa = sel.value; $('.kn', wrap).textContent = khoa || 'chưa rõ';
+      $('.khoa-note', wrap).textContent = khoa ? 'Bạn đã chọn' : 'Tổng đài sẽ giúp chọn khoa';
+      const ck = $('.ck', wrap); ck.className = 'ck' + (khoa ? '' : ' q'); ck.innerHTML = khoa ? ICON_CHECK : '?';
+      sel.remove();
+    });
+    $('.khoa-note', wrap).after(sel); sel.focus();
+  });
+  wrap.querySelectorAll('.city button').forEach(b => b.addEventListener('click', () => {
+    wrap.querySelectorAll('.city button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    $('[data-e="city"]', fb).textContent = '';
+  }));
+  $('.chat', wrap).addEventListener('click', () => toast('Mở Web chat đang có trên site'));
+
+  const err = (f, k, m) => { $(`[data-e="${k}"]`, f).textContent = m; };
+  const clear = f => f.querySelectorAll('.err').forEach(x => x.textContent = '');
+
+  fb.addEventListener('submit', e => {
+    e.preventDefault(); clear(fb);
+    const city = $('.city [aria-pressed="true"]', fb); let ok = true;
+    if (!city){ err(fb,'city','Chọn Hà Nội hoặc TP.HCM'); ok = false; }
+    if (fb.hoten.value.trim().length < 2){ err(fb,'hoten','Nhập họ tên'); ok = false; }
+    if (!validPhone(fb.phone.value)){ err(fb,'phone','Số điện thoại gồm 10 số, bắt đầu bằng 0'); ok = false; }
+    if (!fb.agree.checked){ err(fb,'agree','Cần đồng ý để Tâm Anh gọi lại'); ok = false; }
+    if (!ok) return;
+    showDone('Đã gửi yêu cầu đặt lịch', `Tâm Anh sẽ gọi số <b>${esc(maskPhone(fb.phone.value))}</b> để chốt giờ khám${khoa?' '+esc(khoa):''} tại ${esc(city.dataset.v)}.`);
+  });
+  fa.addEventListener('submit', e => {
+    e.preventDefault(); clear(fa); let ok = true;
+    if (fa.q.value.trim().length < 5){ err(fa,'q','Gõ câu hỏi của bạn'); ok = false; }
+    if (!validPhone(fa.phone.value)){ err(fa,'phone','Số điện thoại gồm 10 số, bắt đầu bằng 0'); ok = false; }
+    if (!fa.agree.checked){ err(fa,'agree','Cần đồng ý để Tâm Anh liên hệ'); ok = false; }
+    if (!ok) return;
+    showDone('Đã gửi câu hỏi', `Tâm Anh sẽ liên hệ số <b>${esc(maskPhone(fa.phone.value))}</b> để trả lời.`);
+  });
+  function showDone(t, p){
+    body.hidden = true; done.hidden = false;
+    done.innerHTML = `<div class="ok">${ICON_CHECK.replace(/13/g,'22')}</div><b>${t}</b><p>${p}</p>
+      <div class="ctx">Gửi kèm: bài “${esc(PAGE.title)}”${khoa?`, khoa ${esc(khoa)}`:''}.</div>
+      <button type="button">Gửi yêu cầu khác</button>`;
+    $('button', done).addEventListener('click', () => {
+      [fb, fa].forEach(f => { f.reset(); clear(f); });
+      wrap.querySelectorAll('.city button').forEach(x => x.setAttribute('aria-pressed','false'));
+      setTab('book');
+    });
+  }
+  setTab(tab || 'book');
+  return wrap;
+}
+
+/* PC-1 */
+const box = $('#pc1box');
+box.insertAdjacentHTML('beforeend', emgHTML(false));
+bindCalls(box);
+box.appendChild(buildCTA('book'));
+
+/* PC-2 */
+const rail = $('#rail'), panel = $('#panel'), pt = $('#panel-t'), pb = $('#panel-b');
+let rafId = 0;
+function openPanel(what){
+  pb.innerHTML = '';
+  if (what === 'emg'){ pt.textContent = 'Khẩn cấp'; pb.insertAdjacentHTML('beforeend', emgHTML(true)); bindCalls(pb); }
+  else {
+    const cta = buildCTA(what);
+    const setTitle = t => pt.textContent = (t === 'book' ? 'Đặt lịch khám' : 'Hỏi bác sĩ');
+    cta.addEventListener('tab', e => setTitle(e.detail)); setTitle(what);
+    pb.appendChild(cta);
+  }
+  panel.hidden = false; rail.style.visibility = 'hidden';
+  cancelAnimationFrame(rafId); rafId = requestAnimationFrame(() => panel.classList.add('on'));
+  const first = pb.querySelector('input, button'); if (first) first.focus({preventScroll:true});
+}
+function closePanel(){
+  cancelAnimationFrame(rafId); panel.classList.remove('on'); rail.style.visibility = '';
+  setTimeout(() => { if (!panel.classList.contains('on')) panel.hidden = true; }, 220);
+}
+rail.addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openPanel(b.dataset.open); });
+$('#panel-x').addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
+
+/* nút đang có trên site */
+$('#chatfab').addEventListener('click', () => toast('Web chat đang có trên site, giữ nguyên'));
+document.querySelectorAll('.tags a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+
+/* thanh điều khiển demo */
+const dock = $('#dock');
+function setMode(m){
+  document.body.classList.toggle('m-pc1', m === 'pc1');
+  document.body.classList.toggle('m-pc2', m === 'pc2');
+  dock.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === m));
+  if (!panel.hidden) closePanel();
+  try { history.replaceState(null, '', '#' + m); } catch(_) {}
+  refresh();
+}
+function refresh(){
+  const w = window.innerWidth;
+  $('#vw').textContent = `Màn ${w}px`;
+  $('#hint').hidden = !(document.body.classList.contains('m-pc1') && w < 1200);
+  if (document.body.classList.contains('m-pc1') && w >= 1200 && !panel.hidden) closePanel();
+}
+dock.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+$('#infoBtn').addEventListener('click', e => { const i = $('#info'); i.hidden = !i.hidden; e.currentTarget.setAttribute('aria-expanded', !i.hidden); });
+$('#minBtn').addEventListener('click', e => { dock.classList.toggle('min'); e.currentTarget.textContent = dock.classList.contains('min') ? '+' : '–'; e.currentTarget.title = dock.classList.contains('min') ? 'Mở' : 'Thu gọn'; });
+window.addEventListener('resize', refresh);
+setMode(location.hash === '#pc2' ? 'pc2' : 'pc1');
+</script>
+</body>
+</html>
